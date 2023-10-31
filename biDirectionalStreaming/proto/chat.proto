@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package chat;
+
+option go_package = "./proto";
+
+service ChatService {
+    rpc Chat(stream Message) returns (stream Message);
+}
+
+message Message {
+    string user = 1;
+    string content = 2;
+}

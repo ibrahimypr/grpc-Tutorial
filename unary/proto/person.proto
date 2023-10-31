@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package person;
+
+option go_package = "./proto";
+
+
+message Person {
+    string  name = 1;
+    int32   age = 2;
+}
+
+message PersonList {
+    repeated Person persons = 1;
+}
+
+message PersonRequest {
+    string name = 1;
+}
+
+message Empty {}
+
+service PersonService {
+    rpc GetPerson(PersonRequest) returns (Person);
+    rpc GetPersons(Empty) returns (PersonList);
+}

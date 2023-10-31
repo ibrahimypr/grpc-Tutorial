@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package productrating;
+
+option go_package = "./proto";
+
+service RatingService {
+  rpc RateProduct(stream ProductRating) returns (AverageRating);
+}
+
+message ProductRating {
+  string productId = 1;
+  int32 rating = 2;
+}
+
+message AverageRating {
+  float average = 1;
+}

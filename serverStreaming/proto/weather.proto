@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package weather;
+
+option go_package = "./proto";
+
+message WeatherForecast {
+    string  data = 1;
+    string  description = 2;
+    float   temperature = 3;
+}
+
+message CityRequest {
+    string  city_name = 1;
+}
+
+service WeatherService {
+    rpc GetWeeklyForecast(CityRequest) returns (stream WeatherForecast);
+}
